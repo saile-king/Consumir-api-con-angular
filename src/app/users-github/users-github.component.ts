@@ -7,7 +7,7 @@ import { APIService } from '../services/api.service';
 })
 export class UsersGithubComponent implements OnInit {
   users:any = []
-  name!: string;
+  name: string = "";
   constructor(public api:APIService) {
 
   }
@@ -17,12 +17,15 @@ export class UsersGithubComponent implements OnInit {
   }
 
   searchUser(){
+    this.limpiar();
     this.api.getUsers(this.name).subscribe((a:any)=>{
       this.users = a;
       console.log(a)
     });
-
   }
 
+  limpiar(){
+    this.users = []
+  }
 
 }

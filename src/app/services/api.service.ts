@@ -13,12 +13,14 @@ export class APIService {
 
 
   getUsers(name: string){
-    return this.http.get(this.url+name).pipe(map((o:any)=>{
+    return this.http.get(`${this.url}"${name}"`).pipe(map((o:any)=>{
       this.obj = o.items.slice(0, 10)
-      console.log(this.obj);
       return this.obj;
     }));
   }
 
+  ShowUser(username:string){
+    return this.http.get(`https://api.github.com/users/${username}`);
+  }
 
 }
