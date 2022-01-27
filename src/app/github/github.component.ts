@@ -6,6 +6,7 @@ import { GithubService } from '../services/github.service';
   templateUrl: './github.component.html',
   styleUrls: ['./github.component.css']
 })
+
 export class GithubComponent implements OnInit {
 
   name!: string;
@@ -18,7 +19,7 @@ export class GithubComponent implements OnInit {
 
   search(){
     this.githubService.getUser(this.name).subscribe((data:any) => {
-      this.urlImagen = data.items.avatar_url
+      this.urlImagen = data.items[0].avatar_url
     })
   }
 
